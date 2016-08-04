@@ -1,0 +1,31 @@
+_repo: The-Foolish-Dictionary--13-An-exhausting-work-of-reference-to-un-certain-English-words-their-o__1989
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Wurdz, Gideon
+    birthdate: 1875
+    gutenberg_agent_id: '776'
+    url: http://www.gutenberg.org/2009/agents/776
+description: ''
+gutenberg_bookshelf:
+- Humor
+- Reference
+gutenberg_issued: '2007-04-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1989'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Vocabulary -- Humor'
+- !lcsh 'English language -- Semantics -- Humor'
+- !lcc 'PS'
+- !lcsh 'American wit and humor'
+- !lcsh 'English language -- Dictionaries -- Humor'
+- GITenberg
+title: "The Foolish Dictionary\r\nAn exhausting work of reference to un-certain English\
+  \ words, their origin, meaning, legitimate and illegitimate use, confused by a few\
+  \ pictures [not included]"
+url: http://www.gutenberg.org/ebooks/1989
