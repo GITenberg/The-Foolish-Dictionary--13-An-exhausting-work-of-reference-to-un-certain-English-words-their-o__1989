@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: XFn1ykj/GcHSjIju4YyNTpDqlXFxA/OSd2M3ZnrwKhCwiQmdFNGVg7QCpZN32WM5cdh3yg6ji9aO5i+NYYoQ3FuXv+K5nnTebe6Piq/mMvDvDnU1WBt70UqP6fXg4S8ZX9U4yuz/0oAFjQHeLWP7xxDmKxAbp0jl/i9rVI7RKD0zW3BDjTi0qaaigHLsbGVp6c2O/Zd6L0tipKYQuNTZeokDk6uGON7IiWIc3YXWMIMMLiTs1D7VHVq7IUSGxkox02IyScdEq/U6VxNhVWVZIMyMfza/qKZMzvUqsZinUm6MG9m+sJX8vzsxvbGQ9RpiKdG9K7z73ANPtWRcZo1Jfv6KuwgcdSOPTSvU6IzmN0cxfjw3Fk/SzG2NtUZUEtzI+z5paKOcJiG44IFdSruc7lmHI47cxp9AhwwEEKebcrZLwFIn+2q+7yeUD2Gbd09IRo0w6kNpR19rgxUNxZZynUZVqX2NdadWhu+x91Ol+xjFaazN384iEnuSz6YP8izLz9gNC+ZowNjdAZyweJYhkPH5c6Q75a/70XQhmKcFzRz5JVOXKAR+Xi/5qkErMDKUsuQGd+8ZQSffWP4cQ2E/Ui6V6csd3xkaDQwpIQgZKTno+0z3CYuqYB+3/n3B/tVfVe0T3MkcyzDIAsh/gUSp6kW/Myn40BJ4//6qSrCLgeM=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Foolish-Dictionary--13-An-exhausting-work-of-reference-to-un-certain-English-words-their-o__1989
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
