@@ -1,5 +1,8 @@
 _repo: The-Foolish-Dictionary--13-An-exhausting-work-of-reference-to-un-certain-English-words-their-o__1989
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: archival
+  image_path: 1989-h/images/cover.jpg
 creator:
   author:
     agent_name: Wurdz, Gideon
@@ -7,6 +10,8 @@ creator:
     gutenberg_agent_id: '776'
     url: http://www.gutenberg.org/2009/agents/776
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/1989#The-Foolish-Dictionary--13-An-exhausting-work-of-reference-to-un-certain-English-words-their-o_
 gutenberg_bookshelf:
 - Humor
 - Reference
